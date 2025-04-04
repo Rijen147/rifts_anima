@@ -1,0 +1,204 @@
+function riftPool(lvl: number, loc: location, rift.id: number, s: number):
+	set {_chance} to a random integer between 1 and 100
+	if {_lvl} = 1:
+		if {_chance} is between 1 and 33:
+			loop {_s}*2 times:
+				spawn zombie at {_loc}:
+					if {_s} is 1:
+						set name of zombie to "<purple><obfuscated>Rifters"
+						add nbt from "{Team:""LD_Color_5""}" to nbt of zombie
+					else if {_s} is 2:
+						set name of zombie to "<cyan><obfuscated>Rifters"
+						add nbt from "{Team:""LD_Color_3""}" to nbt of zombie
+					apply glowing without particles to zombie for 10 minutes
+					set helmet slot of zombie to unbreakable iron helmet 
+					set zombie's tool to iron sword
+					set metadata value "rift" of zombie to "true"
+					add zombie to {rift.phase1.pool.%{_rift.id}%::*}
+			spawn zombie at {_loc}:
+				if {_s} is 1:
+					set name of zombie to "<purple><obfuscated>Rifters"
+					add nbt from "{Team:""LD_Color_5""}" to nbt of zombie
+				else if {_s} is 2:
+					set name of zombie to "<cyan><obfuscated>Rifters"
+					add nbt from "{Team:""LD_Color_3""}" to nbt of zombie
+				apply glowing without particles to zombie for 10 minutes
+				set helmet slot of zombie to unbreakable iron helmet
+				set zombie's tool to iron sword of fire aspect 2
+				set metadata value "rift" of zombie to "true"
+				add zombie to {rift.phase1.pool.%{_rift.id}%::*}
+		else if {_chance} is between 34 and 66:
+			loop {_s}*2 times:
+				spawn skeleton at {_loc}:
+					if {_s} is 1:
+						set name of skeleton to "<purple><obfuscated>Rifters"
+						add nbt from "{Team:""LD_Color_5""}" to nbt of skeleton
+					else if {_s} is 2:
+						set name of skeleton to "<cyan><obfuscated>Rifters"
+						add nbt from "{Team:""LD_Color_3""}" to nbt of skeleton
+					apply glowing without particles to skeleton for 10 minutes
+					set helmet slot of skeleton to unbreakable iron helmet 
+					set skeleton's tool to bow of punch
+					set metadata value "rift" of skeleton to "true"
+					add skeleton to {rift.phase1.pool.%{_rift.id}%::*}
+			spawn skeleton at {_loc}:
+				if {_s} is 1:
+					set name of skeleton to "<purple><obfuscated>Rifters"
+					add nbt from "{Team:""LD_Color_5""}" to nbt of skeleton
+				else if {_s} is 2:
+					set name of skeleton to "<cyan><obfuscated>Rifters"
+					add nbt from "{Team:""LD_Color_3""}" to nbt of skeleton
+				apply glowing without particles to skeleton for 10 minutes
+				set helmet slot of skeleton to unbreakable iron helmet 
+				set skeleton's tool to bow of punch and flame
+				set metadata value "rift" of skeleton to "true"
+				add skeleton to {rift.phase1.pool.%{_rift.id}%::*}
+		else:
+			loop {_s}*2 times:
+				spawn pillager at {_loc}:
+					if {_s} is 1:
+						set name of pillager to "<purple><obfuscated>Rifters"
+						add nbt from "{Team:""LD_Color_5""}" to nbt of pillager
+					else if {_s} is 2:
+						set name of pillager to "<cyan><obfuscated>Rifters"
+						add nbt from "{Team:""LD_Color_3""}" to nbt of pillager
+					apply glowing without particles to pillager for 10 minutes
+					set pillager's tool to crossbow
+					set metadata value "rift" of pillager to "true"
+					add pillager to {rift.phase1.pool.%{_rift.id}%::*}
+			spawn pillager at {_loc}:
+				if {_s} is 1:
+					set name of pillager to "<purple><obfuscated>Rifters"
+					add nbt from "{Team:""LD_Color_5""}" to nbt of pillager
+				else if {_s} is 2:
+					set name of pillager to "<cyan><obfuscated>Rifters"
+					add nbt from "{Team:""LD_Color_3""}" to nbt of pillager
+				apply glowing without particles to pillager for 10 minutes
+				set pillager's tool to crossbow of quick charge 3
+				set metadata value "rift" of pillager to "true"
+				add pillager to {rift.phase1.pool.%{_rift.id}%::*}
+	else if {_lvl} = 2:
+		if {_chance} is between 1 and 33:
+			loop {_s}*2 times:
+				spawn skeleton at {_loc}:
+					if {_s} is 1:
+						set name of skeleton to "<purple><obfuscated>Rifters"
+						add nbt from "{Team:""LD_Color_5""}" to nbt of skeleton
+					else if {_s} is 2:
+						set name of skeleton to "<cyan><obfuscated>Rifters"
+						add nbt from "{Team:""LD_Color_3""}" to nbt of skeleton
+					apply glowing without particles to skeleton for 10 minutes
+					set helmet slot of skeleton to unbreakable iron helmet 
+					set chestplate slot of skeleton to unbreakable chainmail chestplate
+					set leggings slot of skeleton to unbreakable chainmail leggings
+					set boots slot of skeleton to unbreakable chainmail boots
+					set skeleton's tool to bow of punch 2
+					set metadata value "rift" of skeleton to "true"
+					add skeleton to {rift.phase2.pool.%{_rift.id}%::*}
+			spawn skeleton at {_loc}:
+				if {_s} is 1:
+					set name of skeleton to "<purple><obfuscated>Rifters"
+					add nbt from "{Team:""LD_Color_5""}" to nbt of skeleton
+				else if {_s} is 2:
+					set name of skeleton to "<cyan><obfuscated>Rifters"
+					add nbt from "{Team:""LD_Color_3""}" to nbt of skeleton
+				apply glowing without particles to skeleton for 10 minutes
+				set helmet slot of skeleton to unbreakable iron helmet 
+				set chestplate slot of skeleton to unbreakable iron chestplate
+				set leggings slot of skeleton to unbreakable iron leggings
+				set boots slot of skeleton to unbreakable iron boots
+				set skeleton's tool to bow of punch 2 and power 3
+				set metadata value "rift" of skeleton to "true"
+				add skeleton to {rift.phase2.pool.%{_rift.id}%::*}
+		else if {_chance} is between 34 and 66:
+			loop {_s}*2 times:
+				spawn vindicator at {_loc}:
+					if {_s} is 1:
+						set name of vindicator to "<purple><obfuscated>Rifters"
+						add nbt from "{Team:""LD_Color_5""}" to nbt of vindicator
+					else if {_s} is 2:
+						set name of vindicator to "<cyan><obfuscated>Rifters"
+						add nbt from "{Team:""LD_Color_3""}" to nbt of vindicator
+					apply glowing without particles to vindicator for 10 minutes
+					set metadata value "rift" of vindicator to "true"
+					add vindicator to {rift.phase2.pool.%{_rift.id}%::*}
+			spawn vindicator at {_loc}:
+				if {_s} is 1:
+					set name of vindicator to "<purple><obfuscated>Rifters"
+					add nbt from "{Team:""LD_Color_5""}" to nbt of vindicator
+				else if {_s} is 2:
+					set name of vindicator to "<cyan><obfuscated>Rifters"
+					add nbt from "{Team:""LD_Color_3""}" to nbt of vindicator
+				apply glowing without particles to vindicator for 10 minutes
+				set vindicator's tool to diamond axe
+				set metadata value "rift" of vindicator to "true"
+				add vindicator to {rift.phase2.pool.%{_rift.id}%::*}
+		else:
+			loop ({_s}*2)+1 times:
+				spawn illusioner at {_loc}:
+					if {_s} is 1:
+						set name of illusioner to "<purple><obfuscated>Rifters"
+						add nbt from "{Team:""LD_Color_5""}" to nbt of illusioner
+					else if {_s} is 2:
+						set name of illusioner to "<cyan><obfuscated>Rifters"
+						add nbt from "{Team:""LD_Color_3""}" to nbt of illusioner
+					apply glowing without particles to illusioner for 10 minutes
+					set metadata value "rift" of illusioner to "true"
+					add illusioner to {rift.phase2.pool.%{_rift.id}%::*}
+	else if {_lvl} = 3:
+		if {_chance} is between 1 and 33:
+			loop {_s}*3 times:
+				spawn evoker at {_loc}:
+					if {_s} is 1:
+						set name of evoker to "<purple><obfuscated>Rifters"
+						add nbt from "{Team:""LD_Color_5""}" to nbt of evoker
+					else if {_s} is 2:
+						set name of evoker to "<cyan><obfuscated>Rifters"
+						add nbt from "{Team:""LD_Color_3""}" to nbt of evoker
+					apply glowing without particles to evoker for 10 minutes
+					set metadata value "rift" of evoker to "true"
+					add evoker to {rift.phase3.pool.%{_rift.id}%::*}
+		else if {_chance} is between 34 and 66:
+			loop {_s}*3 times:
+				spawn phantom at {_loc}:
+					if {_s} is 1:
+						set name of phantom to "<purple><obfuscated>Rifters"
+						add nbt from "{Team:""LD_Color_5""}" to nbt of phantom
+					else if {_s} is 2:
+						set name of phantom to "<cyan><obfuscated>Rifters"
+						add nbt from "{Team:""LD_Color_3""}" to nbt of phantom
+					apply glowing without particles to phantom for 10 minutes
+					set metadata value "rift" of phantom to "true"
+					add phantom to {rift.phase3.pool.%{_rift.id}%::*}
+		else:
+			loop {_s}*2 times:
+				spawn zombie at {_loc}:
+					if {_s} is 1:
+						set name of zombie to "<purple><obfuscated>Rifters"
+						add nbt from "{Team:""LD_Color_5""}" to nbt of zombie
+					else if {_s} is 2:
+						set name of zombie to "<cyan><obfuscated>Rifters"
+						add nbt from "{Team:""LD_Color_3""}" to nbt of zombie
+					apply glowing without particles to zombie for 10 minutes
+					set helmet slot of zombie to unbreakable diamond helmet 
+					set chestplate slot of zombie to unbreakable diamond chestplate
+					set leggings slot of zombie to unbreakable diamond leggings
+					set boots slot of zombie to unbreakable diamond boots 
+					set zombie's tool to diamond sword
+					set metadata value "rift" of zombie to "true"
+					add zombie to {rift.phase3.pool.%{_rift.id}%::*}
+			spawn zombie at {_loc}:
+				if {_s} is 1:
+					set name of zombie to "<purple><obfuscated>Rifters"
+					add nbt from "{Team:""LD_Color_5""}" to nbt of zombie
+				else if {_s} is 2:
+					set name of zombie to "<cyan><obfuscated>Rifters"
+					add nbt from "{Team:""LD_Color_3""}" to nbt of zombie
+				apply glowing without particles to zombie for 10 minutes
+				set helmet slot of zombie to unbreakable diamond helmet 
+				set chestplate slot of zombie to unbreakable diamond chestplate
+				set leggings slot of zombie to unbreakable diamond leggings
+				set boots slot of zombie to unbreakable diamond boots 
+				set zombie's tool to diamond sword of knockback 2
+				set metadata value "rift" of zombie to "true"
+				add zombie to {rift.phase3.pool.%{_rift.id}%::*}

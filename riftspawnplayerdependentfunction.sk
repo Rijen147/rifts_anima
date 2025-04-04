@@ -1,0 +1,179 @@
+function riftSpawnPlayerDependen(r: number, lvlup: boolean, pl: players):
+	set {_p} to random element of {_pl::*}
+	set {_player.blocks::*} to all blocks in radius 30 of {_p}
+	#set {_air.remove::*} to {_player.blocks::*}
+	#set {_blocks.dummy::*} to {_player.blocks::*}
+	#remove all air from {_air.remove::*}
+	#remove all {_air.remove::*} from {_blocks.dummy::*}
+	#set {_player.blocks::*} to {_blocks.dummy::*}
+	#send 1 to {_p}
+	if {_lvlup} is true:
+		set {_lvlup.chance} to random integer between 1 and 2
+	else:
+		set {_lvlup.chance} to 1
+	loop {_player.blocks::*}:
+		if sunlight level of location of {_player.blocks::%loop-index%} is greater than 14:
+			if block below {_player.blocks::%loop-index%} is solid:
+				if block above {_player.blocks::%loop-index%} is air:
+					block above block above {_player.blocks::%loop-index%} is air
+					block above block above block above {_player.blocks::%loop-index%} is air
+					block above block above block above block above {_player.blocks::%loop-index%} is air
+					y-coordinate of {_player.blocks::%loop-index%} is less than y-coordinate of {_p} + 5
+					#loop {rift.armorstands::*}:
+					#	set {_loc.check} to location of {rift.armorstands::%loop-index-2%}
+					#	set y-coordinate of {_loc.check} to y-coordinate of location of {_player.blocks::%loop-index-1%}
+					#	if distance between {_loc.check} and location of {_player.blocks::%loop-index-1%} is greater than 80:
+					#		set {_loc.fail} to true
+					#if {_loc.fail} is not true:
+					add location of {_player.blocks::%loop-index%} to {_loc.blocks::*}
+	size of {_loc.blocks::*} is not 0
+	set {_loc} to random element of {_loc.blocks::*}
+	add 1 to {rift.amount}
+	add 1 to {rift.id}
+	set {_rift.id} to {rift.id}
+	spawn armor stand at {_loc}
+	add last spawned armor stand to {rift.armorstands::*}
+	add last spawned armor stand to {rift.armorstands.check::*}
+	set {_armor.stand} to last spawned armor stand
+	add nbt from "{Marker:true,Invisible:1,NoGravity:1b}" to nbt of last spawned armor stand
+	set {rift.id.%uuid of last spawned armor stand%} to {rift.id}
+	set {rift.time::%uuid of {_p}%} to now
+	if size of {_loc.blocks::*} is not 0:
+		loop {_lvlup.chance} times:
+			if difference between now and {rift.time::%uuid of {_p}%} is not less than 10 minutes:
+				remove 1 from {rift.amount}
+				remove {_armor.stand} from {rift.armorstands::*}
+				clear {rift.id.%uuid of {_p}%}
+				clear {rift.time::%uuid of {_p}%}
+				kill {_armor.stand}
+				exit loop
+			play sound "minecraft:block.end_portal.spawn" with volume 0.5 with pitch 1.8 to all players
+			if loop-number is 1:
+				broadcast "<purple>Иной мир просачивается через <magenta>разлом"
+			else if loop-number is 2:
+				broadcast "<cyan><bold>Иной мир просачивается через <light blue>разлом"
+				#send "<cyan><bold>Иной мир просачивается через <light blue><bold>разлом" to {debug}
+			if {rift.coordinate.show} is not false:
+				set {_randomint} to random integer between 1 and 4
+				if {_randomint} is 1:
+					if loop-number is 1:
+						broadcast "<purple>X: %x-coordinate of {_loc}% Y: %y-coordinate of {_loc}% Z: %z-coordinate of {_loc}%"
+					else if loop-number is 2:
+						broadcast "<light blue>X: %x-coordinate of {_loc}% Y: <obfuscated>%y-coordinate of {_loc}%<r><light blue> Z: %z-coordinate of {_loc}%"
+						#send "<light blue>X: %x-coordinate of {_loc}% Y: <obfuscated>%y-coordinate of {_loc}%<r><light blue> Z: %z-coordinate of {_loc}%" to {debug}
+				else if {_randomint} is 2:
+					if loop-number is 1:
+						broadcast "<purple>X: <obfuscated>%x-coordinate of {_loc}%<r><purple> Y: %y-coordinate of {_loc}% Z: %z-coordinate of {_loc}%"
+					else if loop-number is 2:
+						broadcast "<light blue>X: %x-coordinate of {_loc}% Y: <obfuscated>%y-coordinate of {_loc}%<r><light blue> Z: %z-coordinate of {_loc}%"
+						#send "<light blue>X: %x-coordinate of {_loc}% Y: <obfuscated>%y-coordinate of {_loc}%<r><light blue> Z: %z-coordinate of {_loc}%" to {debug}
+				else if {_randomint} is 3:
+					if loop-number is 1:
+						broadcast "<purple>X: %x-coordinate of {_loc}% Y: <obfuscated>%y-coordinate of {_loc}%<r><purple> Z: %z-coordinate of {_loc}%"
+					else if loop-number is 2:
+						broadcast "<light blue>X: %x-coordinate of {_loc}% Y: <obfuscated>%y-coordinate of {_loc}%<r><light blue> Z: %z-coordinate of {_loc}%"
+						#send "<light blue>X: %x-coordinate of {_loc}% Y: <obfuscated>%y-coordinate of {_loc}%<r><light blue> Z: %z-coordinate of {_loc}%" to {debug}
+				else if {_randomint} is 4:
+					if loop-number is 1:
+						broadcast "<purple>X: %x-coordinate of {_loc}% Y: %y-coordinate of {_loc}% Z: <obfuscated>%z-coordinate of {_loc}%"
+					else if loop-number is 2:
+						broadcast "<light blue>X: %x-coordinate of {_loc}% Y: %y-coordinate of {_loc}% Z: <obfuscated>%z-coordinate of {_loc}%"
+						#send "<light blue>X: %x-coordinate of {_loc}% Y: %y-coordinate of {_loc}% Z: <obfuscated>%z-coordinate of {_loc}%" to {debug}
+			set {_phase} to 1
+			while difference between now and {rift.time::%uuid of {_p}%} is less than 10 minutes:
+				if {_phase} is 1:
+					if {_phase1.spawned} is true:
+						if size of {rift.phase1.pool.%{_rift.id}%::*} is 0:
+							set {_phase} to 2
+						else:
+							loop {rift.phase1.pool.%{_rift.id}%::*}:
+								if {rift.phase1.pool.%{_rift.id}%::%loop-index%} is dead:
+									remove {rift.phase1.pool.%{_rift.id}%::%loop-index%} from {rift.phase1.pool.%{_rift.id}%::*}
+								if {rift.phase1.pool.%{_rift.id}%::%loop-index%} is not in world "world":
+									kill {rift.phase1.pool.%{_rift.id}%::%loop-index%}
+									remove {rift.phase1.pool.%{_rift.id}%::%loop-index%} from {rift.phase1.pool.%{_rift.id}%::*}
+								#if difference between now and {rift.time::%uuid of {_p}%} is not less than 10 minutes:
+								#	reset nbt of {rift.phase1.pool.%{_rift.id}%::%loop-index%}
+					else:
+						riftPool(1, {_loc}, {_rift.id}, loop-number-1)
+						set {_phase1.spawned} to true
+					riftAnimation(loop-number-1, 1, {_r}, {_loc})
+					wait 1 tick
+				else if {_phase} is 2:
+					if {_phase2.spawned} is true:
+						if size of {rift.phase2.pool.%{_rift.id}%::*} is 0:
+							set {_phase} to 3
+						else:
+							loop {rift.phase2.pool.%{_rift.id}%::*}:
+								if {rift.phase2.pool.%{_rift.id}%::%loop-index%} is dead:
+									remove {rift.phase2.pool.%{_rift.id}%::%loop-index%} from {rift.phase2.pool.%{_rift.id}%::*}
+								if {rift.phase2.pool.%{_rift.id}%::%loop-index%} is not in world "world":
+									kill {rift.phase2.pool.%{_rift.id}%::%loop-index%}
+									remove {rift.phase2.pool.%{_rift.id}%::%loop-index%} from {rift.phase2.pool.%{_rift.id}%::*}
+								#if difference between now and {rift.time::%uuid of {_p}%} is not less than 10 minutes:
+								#	reset nbt of {rift.phase2.pool.%{_rift.id}%::%loop-index%}
+					else:
+						riftPool(2, {_loc}, {_rift.id}, loop-number-1)
+						set {_phase2.spawned} to true
+					riftAnimation(loop-number-1, 2, {_r}, {_loc})
+					wait 1 tick
+				else if {_phase} is 3:
+					if {_phase3.spawned} is true:
+						if size of {rift.phase3.pool.%{_rift.id}%::*} is 0:
+							set {_phase} to 4
+						else:
+							loop {rift.phase3.pool.%{_rift.id}%::*}:
+								if {rift.phase3.pool.%{_rift.id}%::%loop-index%} is dead:
+									remove {rift.phase3.pool.%{_rift.id}%::%loop-index%} from {rift.phase3.pool.%{_rift.id}%::*}
+								if {rift.phase3.pool.%{_rift.id}%::%loop-index%} is not in world "world":
+									kill {rift.phase3.pool.%{_rift.id}%::%loop-index%}
+									remove {rift.phase3.pool.%{_rift.id}%::%loop-index%} from {rift.phase3.pool.%{_rift.id}%::*}
+								#if difference between now and {rift.time::%uuid of {_p}%} is not less than 10 minutes:
+								#	reset nbt of {rift.phase3.pool.%{_rift.id}%::%loop-index%}
+					else:
+						riftPool(3, {_loc}, {_rift.id}, loop-number-1)
+						set {_phase3.spawned} to true
+					riftAnimation(loop-number-1, 3, {_r}, {_loc})
+					wait 1 tick
+				else if {_phase} is 4:
+					if {_lvlup.chance} is 1:
+						apply darkness to all players in radius 10 of {_loc} for 10 seconds
+						riftAnimation(loop-number-1, 4, {_r}, {_loc})
+						broadcast "<purple>Разлом на координатах X: %x-coordinate of {_loc}% Y: %y-coordinate of {_loc}% Z: %z-coordinate of {_loc}% закрыт."
+						chance of 33%:
+							drop glowing iron nugget named "<##c7c7c7>Оловянный кусочек" with lore "", "<##9e9e9e>Заряжен Осдейном" at {_loc}
+					else if {_lvlup.chance} is 2:
+						if loop-number-1 is 1:
+							riftAnimation(loop-number-1, 5, {_r}, {_loc})
+							if {rift.coordinate.show} is false:
+								broadcast "<purple>Разлом на координатах.."
+								#send "<purple>Разлом на координатах.." to {debug}
+							else:
+								broadcast "<purple>Разлом.."
+								#send "<purple>Разлом.." to {debug}
+							clear {_phase1.spawned}
+							clear {_phase2.spawned}
+							clear {_phase3.spawned}
+							wait 5 second
+							broadcast "<cyan>..открывается с новой силой!"
+							#send "<cyan>..открывается с новой силой!" to {debug}
+							wait 6 seconds
+						else if loop-number-1 is 2:
+							riftAnimation(loop-number-1, 4, {_r}, {_loc})
+							broadcast "<cyan>Разлом на координатах X: %x-coordinate of {_loc}% Y: %y-coordinate of {_loc}% Z: %z-coordinate of {_loc}% закрыт."
+							#send "<cyan>Разлом на координатах X: %x-coordinate of {_loc}% Y: %y-coordinate of {_loc}% Z: %z-coordinate of {_loc}% закрыт." to {debug}
+							apply darkness to all players in radius 15 of {_loc} for 10 seconds
+					exit 1 loop
+				wait 25 ticks
+		remove 1 from {rift.amount}
+		remove {_armor.stand} from {rift.armorstands::*}
+		clear {rift.id.%uuid of {_p}%}
+		clear {rift.time::%uuid of {_p}%}
+		kill {_armor.stand}
+	else:
+		remove 1 from {rift.amount}
+		remove {_armor.stand} from {rift.armorstands::*}
+		clear {rift.id.%uuid of {_p}%}
+		clear {rift.time::%uuid of {_p}%}
+		kill {_armor.stand}
+

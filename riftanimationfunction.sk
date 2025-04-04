@@ -1,0 +1,376 @@
+function riftAnimation(s: number, stage: number, r: number, loc: location):
+	if {_s} is 1:
+		set {_loc10} to {_loc}
+		set {_loc1} to {_loc}
+		set {_loc2} to {_loc}
+		set {_loc3} to {_loc}
+		set {_loc4} to {_loc}
+		set {_loc5} to {_loc}
+		add 5 to y-coordinate of {_loc10}
+		add 6.5 to y-coordinate of {_loc1}
+		add 5.5 to y-coordinate of {_loc2}
+		add 6.5 to y-coordinate of {_loc4}
+		add 5.5 to y-coordinate of {_loc3}
+		add 6.5 to y-coordinate of {_loc5}
+		if {_r} is 0:
+			add 0.2 to z-coordinate of {_loc2}
+			add 0.2 to z-coordinate of {_loc4}
+			remove 0.2 from z-coordinate of {_loc3}
+			remove 0.2 from z-coordinate of {_loc5}
+		else if {_r} is 1:
+			add 0.2 to x-coordinate of {_loc2}
+			add 0.2 to x-coordinate of {_loc4}
+			remove 0.2 from x-coordinate of {_loc3}
+			remove 0.2 from x-coordinate of {_loc5}
+		if {_stage} is 1:
+			show 250 purple dust with size 1.5 with offset of 0.12, 1.5, 0.12 at {_loc10}
+			show 50 magenta dust with size 1.5 with offset of 0.15, 0.3, 0.15 at {_loc1}
+			if {_r} is 0:
+				show 200 purple dust with size 1.5 with offset of 1, 0.12, 0 at {_loc1}
+				show 25 magenta dust with size 1.5 with offset of 0.3, 0.1, 0 at {_loc1}
+			else if {_r} is 1:
+				show 200 purple dust with size 1.5 with offset of 0, 0.12, 1 at {_loc1}
+				show 25 magenta dust with size 1.5 with offset of 0, 0.1, 0.3 at {_loc1}
+		else if {_stage} is 2:
+			show 250 purple dust with size 1.5 with offset of 0.12, 1.5, 0.12 at {_loc10}
+			show 150 black dust with size 1.5 with offset of 0.1, 1.5, 0.1 at {_loc10}
+			show 50 magenta dust with size 1.5 with offset of 0.15, 0.3, 0.15 at {_loc1}
+			if {_r} is 0:
+				show 200 purple dust with size 1.5 with offset of 1, 0.12, 0 at {_loc1}
+				show 100 black dust with size 1.5 with offset of 1, 0.1, 0 at {_loc1}
+				show 25 magenta dust with size 1.5 with offset of 0.3, 0.1, 0 at {_loc1}
+			else if {_r} is 1:
+				show 200 purple dust with size 1.5 with offset of 0, 0.12, 1 at {_loc1}
+				show 100 black dust with size 1.5 with offset of 0, 0.1, 1 at {_loc1}
+				show 25 magenta dust with size 1.5 with offset of 0, 0.1, 0.3 at {_loc1}
+		else if {_stage} is 3:
+			show 200 black dust with size 1.5 with offset of 0.1, 1.3, 0.1 at {_loc2}
+			show 200 black dust with size 1.5 with offset of 0.1, 1.3, 0.1 at {_loc3}
+			show 50 magenta dust with size 1.5 with offset of 0.15, 0.3, 0.15 at {_loc5}
+			show 50 magenta dust with size 1.5 with offset of 0.15, 0.3, 0.15 at {_loc4}
+			if {_r} is 0:
+				show 200 purple dust with size 1.8 with offset of 0.12, 1.5, 0 at {_loc10}
+				show 200 purple dust with size 1.8 with offset of 1, 0.12, 0 at {_loc1}
+				show 200 black dust with size 1.5 with offset of 1, 0.1, 0 at {_loc4}
+				show 200 black dust with size 1.5 with offset of 1, 0.1, 0 at {_loc5}
+				show 25 magenta dust with size 1.5 with offset of 0.3, 0.1, 0 at {_loc5}
+				show 25 magenta dust with size 1.5 with offset of 0.3, 0.1, 0 at {_loc4}
+			else if {_r} is 1:
+				show 200 purple dust with size 1.8 with offset of 0, 1.5, 0.12 at {_loc10}
+				show 200 purple dust with size 1.8 with offset of 0, 0.12, 1 at {_loc1}
+				show 200 black dust with size 1.5 with offset of 0, 0.1, 1 at {_loc4}
+				show 200 black dust with size 1.5 with offset of 0, 0.1, 1 at {_loc5}
+				show 25 magenta dust with size 1.5 with offset of 0, 0.1, 0.3 at {_loc5}
+				show 25 magenta dust with size 1.5 with offset of 0, 0.1, 0.3 at {_loc4}
+		else if {_stage} is 4:
+			loop 5 times:
+				show 200 black dust with size 1.5 with offset of 0.1, 1.3, 0.1 at {_loc2}
+				show 200 black dust with size 1.5 with offset of 0.1, 1.3, 0.1 at {_loc3}
+				show 50 magenta dust with size 1.5 with offset of 0.15, 0.3, 0.15 at {_loc5}
+				show 50 magenta dust with size 1.5 with offset of 0.15, 0.3, 0.15 at {_loc4}
+				if {_r} is 0:
+					show 50 blue dust with size 1.8 with offset of 0.12, 1.5, 0 at {_loc10} 
+					show 50 blue dust with size 1.8 with offset of 1, 0.12, 0 at {_loc1}
+					show 50 light blue dust with size 1.8 with offset of 0.12, 1.5, 0 at {_loc10}
+					show 50 light blue dust with size 1.8 with offset of 1, 0.12, 0 at {_loc1}
+					show 200 black dust with size 1.5 with offset of 1, 0.1, 0 at {_loc4}
+					show 200 black dust with size 1.5 with offset of 1, 0.1, 0 at {_loc5}
+					show 25 magenta dust with size 1.5 with offset of 0.3, 0.1, 0 at {_loc5}
+					show 25 magenta dust with size 1.5 with offset of 0.3, 0.1, 0 at {_loc4}
+				else if {_r} is 1:
+					show 50 blue dust with size 1.8 with offset of 0, 1.5, 0.12 at {_loc10} 
+					show 50 blue dust with size 1.8 with offset of 0, 0.12, 1 at {_loc1}
+					show 50 light blue dust with size 1.8 with offset of 0, 1.5, 0.12 at {_loc10}
+					show 50 light blue dust with size 1.8 with offset of 0, 0.12, 1 at {_loc1}
+					show 200 black dust with size 1.5 with offset of 0, 0.1, 1 at {_loc4}
+					show 200 black dust with size 1.5 with offset of 0, 0.1, 1 at {_loc5}
+					show 25 magenta dust with size 1.5 with offset of 0, 0.1, 0.3 at {_loc5}
+					show 25 magenta dust with size 1.5 with offset of 0, 0.1, 0.3 at {_loc4}
+				wait 0.5 seconds
+			loop 5 times:
+				show 200 black dust with size 1.5 with offset of 0.1, 1.3, 0.1 at {_loc2}
+				show 200 black dust with size 1.5 with offset of 0.1, 1.3, 0.1 at {_loc3}
+				show 50 cyan dust with size 1.5 with offset of 0.15, 0.3, 0.15 at {_loc5}
+				show 50 cyan dust with size 1.5 with offset of 0.15, 0.3, 0.15 at {_loc4}
+				if {_r} is 0:
+					show 50 blue dust with size 1.8 with offset of 0.12, 1.5, 0 at {_loc10} 
+					show 50 blue dust with size 1.8 with offset of 1, 0.12, 0 at {_loc1}
+					show 50 light blue dust with size 1.8 with offset of 0.12, 1.5, 0 at {_loc10}
+					show 50 light blue dust with size 1.8 with offset of 1, 0.12, 0 at {_loc1}
+					show 200 black dust with size 1.5 with offset of 1, 0.1, 0 at {_loc4}
+					show 200 black dust with size 1.5 with offset of 1, 0.1, 0 at {_loc5}
+					show 25 cyan dust with size 1.5 with offset of 0.3, 0.1, 0 at {_loc5}
+					show 25 cyan dust with size 1.5 with offset of 0.3, 0.1, 0 at {_loc4}
+				else if {_r} is 1:
+					show 50 blue dust with size 1.8 with offset of 0, 1.5, 0.12 at {_loc10} 
+					show 50 blue dust with size 1.8 with offset of 0, 0.12, 1 at {_loc1}
+					show 50 light blue dust with size 1.8 with offset of 0, 1.5, 0.12 at {_loc10}
+					show 50 light blue dust with size 1.8 with offset of 0, 0.12, 1 at {_loc1}
+					show 200 black dust with size 1.5 with offset of 0, 0.1, 1 at {_loc4}
+					show 200 black dust with size 1.5 with offset of 0, 0.1, 1 at {_loc5}
+					show 25 cyan dust with size 1.5 with offset of 0, 0.1, 0.3 at {_loc5}
+					show 25 cyan dust with size 1.5 with offset of 0, 0.1, 0.3 at {_loc4}
+				wait 0.5 seconds
+			loop 3 times:
+				show 200 black dust with size 1.5 with offset of 0.1, 1.3, 0.1 at {_loc2}
+				show 200 black dust with size 1.5 with offset of 0.1, 1.3, 0.1 at {_loc3}
+				show 50 cyan dust with size 1.5 with offset of 0.15, 0.3, 0.15 at {_loc5}
+				show 50 cyan dust with size 1.5 with offset of 0.15, 0.3, 0.15 at {_loc4}
+				if {_r} is 0:
+					show 200 black dust with size 1.5 with offset of 1, 0.1, 0 at {_loc4}
+					show 200 black dust with size 1.5 with offset of 1, 0.1, 0 at {_loc5}
+					show 25 cyan dust with size 1.5 with offset of 0.3, 0.1, 0 at {_loc5}
+					show 25 cyan dust with size 1.5 with offset of 0.3, 0.1, 0 at {_loc4}
+				else if {_r} is 1:
+					show 200 black dust with size 1.5 with offset of 0, 0.1, 1 at {_loc4}
+					show 200 black dust with size 1.5 with offset of 0, 0.1, 1 at {_loc5}
+					show 25 cyan dust with size 1.5 with offset of 0, 0.1, 0.3 at {_loc5}
+					show 25 cyan dust with size 1.5 with offset of 0, 0.1, 0.3 at {_loc4}
+				wait 0.5 seconds
+			loop 3 times:
+				show 50 cyan dust with size 1.5 with offset of 0.15, 0.3, 0.15 at {_loc5}
+				show 50 cyan dust with size 1.5 with offset of 0.15, 0.3, 0.15 at {_loc4}
+				if {_r} is 0:
+					show 25 cyan dust with size 1.5 with offset of 0.3, 0.1, 0 at {_loc4}
+					show 25 cyan dust with size 1.5 with offset of 0.3, 0.1, 0 at {_loc5}
+				else if {_r} is 1:
+					show 25 cyan dust with size 1.5 with offset of 0, 0.1, 0.3 at {_loc4}
+					show 25 cyan dust with size 1.5 with offset of 0, 0.1, 0.3 at {_loc5}
+				wait 0.5 seconds
+		else if {_stage} is 5:
+			loop 5 times:
+				show 200 black dust with size 1.5 with offset of 0.1, 1.3, 0.1 at {_loc2}
+				show 200 black dust with size 1.5 with offset of 0.1, 1.3, 0.1 at {_loc3}
+				show 50 magenta dust with size 1.5 with offset of 0.15, 0.3, 0.15 at {_loc5}
+				show 50 magenta dust with size 1.5 with offset of 0.15, 0.3, 0.15 at {_loc4}
+				if {_r} is 0:
+					show 50 blue dust with size 1.8 with offset of 0.12, 1.5, 0 at {_loc10} 
+					show 50 blue dust with size 1.8 with offset of 1, 0.12, 0 at {_loc1}
+					show 50 light blue dust with size 1.8 with offset of 0.12, 1.5, 0 at {_loc10}
+					show 50 light blue dust with size 1.8 with offset of 1, 0.12, 0 at {_loc1}
+					show 200 black dust with size 1.5 with offset of 1, 0.1, 0 at {_loc4}
+					show 200 black dust with size 1.5 with offset of 1, 0.1, 0 at {_loc5}
+					show 25 magenta dust with size 1.5 with offset of 0.3, 0.1, 0 at {_loc5}
+					show 25 magenta dust with size 1.5 with offset of 0.3, 0.1, 0 at {_loc4}
+				else if {_r} is 1:
+					show 50 blue dust with size 1.8 with offset of 0, 1.5, 0.12 at {_loc10} 
+					show 50 blue dust with size 1.8 with offset of 0, 0.12, 1 at {_loc1}
+					show 50 light blue dust with size 1.8 with offset of 0, 1.5, 0.12 at {_loc10}
+					show 50 light blue dust with size 1.8 with offset of 0, 0.12, 1 at {_loc1}
+					show 200 black dust with size 1.5 with offset of 0, 0.1, 1 at {_loc4}
+					show 200 black dust with size 1.5 with offset of 0, 0.1, 1 at {_loc5}
+					show 25 magenta dust with size 1.5 with offset of 0, 0.1, 0.3 at {_loc5}
+					show 25 magenta dust with size 1.5 with offset of 0, 0.1, 0.3 at {_loc4}
+				wait 0.5 seconds
+			loop 5 times:
+				show 200 black dust with size 1.5 with offset of 0.1, 1.3, 0.1 at {_loc2}
+				show 200 black dust with size 1.5 with offset of 0.1, 1.3, 0.1 at {_loc3}
+				show 50 cyan dust with size 1.5 with offset of 0.15, 0.3, 0.15 at {_loc5}
+				show 50 cyan dust with size 1.5 with offset of 0.15, 0.3, 0.15 at {_loc4}
+				if {_r} is 0:
+					show 50 blue dust with size 1.8 with offset of 0.12, 1.5, 0 at {_loc10} 
+					show 50 blue dust with size 1.8 with offset of 1, 0.12, 0 at {_loc1}
+					show 50 light blue dust with size 1.8 with offset of 0.12, 1.5, 0 at {_loc10}
+					show 50 light blue dust with size 1.8 with offset of 1, 0.12, 0 at {_loc1}
+					show 200 black dust with size 1.5 with offset of 1, 0.1, 0 at {_loc4}
+					show 200 black dust with size 1.5 with offset of 1, 0.1, 0 at {_loc5}
+					show 25 cyan dust with size 1.5 with offset of 0.3, 0.1, 0 at {_loc5}
+					show 25 cyan dust with size 1.5 with offset of 0.3, 0.1, 0 at {_loc4}
+				else if {_r} is 1:
+					show 50 blue dust with size 1.8 with offset of 0, 1.5, 0.12 at {_loc10} 
+					show 50 blue dust with size 1.8 with offset of 0, 0.12, 1 at {_loc1}
+					show 50 light blue dust with size 1.8 with offset of 0, 1.5, 0.12 at {_loc10}
+					show 50 light blue dust with size 1.8 with offset of 0, 0.12, 1 at {_loc1}
+					show 200 black dust with size 1.5 with offset of 0, 0.1, 1 at {_loc4}
+					show 200 black dust with size 1.5 with offset of 0, 0.1, 1 at {_loc5}
+					show 25 cyan dust with size 1.5 with offset of 0, 0.1, 0.3 at {_loc5}
+					show 25 cyan dust with size 1.5 with offset of 0, 0.1, 0.3 at {_loc4}
+				wait 0.5 seconds
+			loop 3 times:
+				show 200 black dust with size 1.5 with offset of 0.1, 1.3, 0.1 at {_loc2}
+				show 200 black dust with size 1.5 with offset of 0.1, 1.3, 0.1 at {_loc3}
+				show 50 cyan dust with size 1.5 with offset of 0.15, 0.3, 0.15 at {_loc5}
+				show 50 cyan dust with size 1.5 with offset of 0.15, 0.3, 0.15 at {_loc4}
+				if {_r} is 0:
+					show 200 black dust with size 1.5 with offset of 1, 0.1, 0 at {_loc4}
+					show 200 black dust with size 1.5 with offset of 1, 0.1, 0 at {_loc5}
+					show 25 cyan dust with size 1.5 with offset of 0.3, 0.1, 0 at {_loc5}
+					show 25 cyan dust with size 1.5 with offset of 0.3, 0.1, 0 at {_loc4}
+				else if {_r} is 1:
+					show 200 black dust with size 1.5 with offset of 0, 0.1, 1 at {_loc4}
+					show 200 black dust with size 1.5 with offset of 0, 0.1, 1 at {_loc5}
+					show 25 cyan dust with size 1.5 with offset of 0, 0.1, 0.3 at {_loc5}
+					show 25 cyan dust with size 1.5 with offset of 0, 0.1, 0.3 at {_loc4}
+				wait 0.5 seconds
+			loop 3 times:
+				show 200 black dust with size 1.5 with offset of 0.1, 1.3, 0.1 at {_loc2}
+				show 200 black dust with size 1.5 with offset of 0.1, 1.3, 0.1 at {_loc3}
+				show 50 cyan dust with size 1.5 with offset of 0.225, 0.45, 0.225 at {_loc5}
+				show 50 cyan dust with size 1.5 with offset of 0.225, 0.45, 0.225 at {_loc4}
+				if {_r} is 0:
+					show 200 black dust with size 1.5 with offset of 1, 0.1, 0 at {_loc4}
+					show 200 black dust with size 1.5 with offset of 1, 0.1, 0 at {_loc5}
+					show 25 cyan dust with size 1.5 with offset of 0.45, 0.15, 0 at {_loc4}
+					show 25 cyan dust with size 1.5 with offset of 0.45, 0.15, 0 at {_loc5}
+				else if {_r} is 1:
+					show 200 black dust with size 1.5 with offset of 0, 0.1, 1 at {_loc4}
+					show 200 black dust with size 1.5 with offset of 0, 0.1, 1 at {_loc5}
+					show 25 cyan dust with size 1.5 with offset of 0, 0.15, 0.45 at {_loc4}
+					show 25 cyan dust with size 1.5 with offset of 0, 0.15, 0.45 at {_loc5}
+				wait 0.5 seconds
+			set {_loc4} to {_loc}
+			set {_loc5} to {_loc}
+			add 6.5 to y-coordinate of {_loc4}
+			add 6.5 to y-coordinate of {_loc5}
+			loop 6 times:
+				add (9.75-6.5)/6 to y-coordinate of {_loc4}
+				add (9.75-6.5)/6 to y-coordinate of {_loc5}
+				show 50 cyan dust with size 1.5 with offset of 0.225, 0.45, 0.225 at {_loc5}
+				show 50 cyan dust with size 1.5 with offset of 0.225, 0.45, 0.225 at {_loc4}
+				if {_r} is 0:
+					show 25 cyan dust with size 1.5 with offset of 0.45, 0.15, 0 at {_loc4}
+					show 25 cyan dust with size 1.5 with offset of 0.45, 0.15, 0 at {_loc5}
+				else if {_r} is 1:
+					show 25 cyan dust with size 1.5 with offset of 0, 0.15, 0.45 at {_loc4}
+					show 25 cyan dust with size 1.5 with offset of 0, 0.15, 0.45 at {_loc5}
+				wait 0.5 seconds		
+	else if {_s} is 2:
+		set {_loc10} to {_loc}
+		set {_loc1} to {_loc}
+		set {_loc2} to {_loc}
+		set {_loc3} to {_loc}
+		set {_loc4} to {_loc}
+		set {_loc5} to {_loc}
+		add 7.5 to y-coordinate of {_loc10}
+		add 9.75 to y-coordinate of {_loc1}
+		add 8.25 to y-coordinate of {_loc2}
+		if {_r} is 0:
+			add 0.3 to z-coordinate of {_loc2}
+			add 0.3 to z-coordinate of {_loc4}
+			remove 0.3 from z-coordinate of {_loc3}
+			remove 0.3 from z-coordinate of {_loc5}
+		else if {_r} is 1:
+			add 0.3 to x-coordinate of {_loc2}
+			add 0.3 to x-coordinate of {_loc4}
+			remove 0.3 from x-coordinate of {_loc3}
+			remove 0.3 from x-coordinate of {_loc5}
+		add 9.75 to y-coordinate of {_loc4}
+		add 8.25 to y-coordinate of {_loc3}
+		add 9.75 to y-coordinate of {_loc5}
+		if {_stage} is 1:
+			show 500 cyan dust with size 1.8 with offset of 0.18, 2.25, 0.18 at {_loc10}
+			show 50 light blue dust with size 1.8 with offset of 0.225, 0.45, 0.225 at {_loc1}
+			if {_r} is 0:
+				show 400 cyan dust with size 1.8 with offset of 1.5, 0.18, 0 at {_loc1}
+				show 25 light blue dust with size 1.8 with offset of 0.45, 0.15, 0 at {_loc1}
+			else if {_r} is 1:
+				show 400 cyan dust with size 1.8 with offset of 0, 0.18, 1.5 at {_loc1}
+				show 25 light blue dust with size 1.8 with offset of 0, 0.15, 0.45 at {_loc1}
+		else if {_stage} is 2:
+			show 500 cyan dust with size 1.8 with offset of 0.18, 2.25, 0.18 at {_loc10}
+			show 300 black dust with size 1.8 with offset of 0.15, 2.25, 0.15 at {_loc10}
+			show 50 light blue dust with size 1.8 with offset of 0.225, 0.45, 0.225 at {_loc1}
+			if {_r} is 0:
+				show 400 cyan dust with size 1.8 with offset of 1.5, 0.18, 0 at {_loc1}
+				show 200 black dust with size 1.8 with offset of 1.5, 0.15, 0 at {_loc1}
+				show 25 light blue dust with size 1.8 with offset of 0.45, 0.15, 0 at {_loc1}
+			else if {_r} is 1:
+				show 400 cyan dust with size 1.8 with offset of 0, 0.18, 1 at {_loc1}
+				show 200 black dust with size 1.8 with offset of 0, 0.15, 1.5 at {_loc1}
+				show 25 light blue dust with size 1.8 with offset of 0, 0.15, 0.45 at {_loc1}
+		else if {_stage} is 3:
+			show 400 black dust with size 1.8 with offset of 0.15, 1.95, 0.15 at {_loc2}
+			show 400 black dust with size 1.8 with offset of 0.15, 1.95, 0.15 at {_loc3}
+			show 50 light blue dust with size 1.8 with offset of 0.225, 0.45, 0.225 at {_loc5}
+			show 50 light blue dust with size 1.8 with offset of 0.225, 0.45, 0.225 at {_loc4}
+			if {_r} is 0:
+				show 400 cyan dust with size 2.25 with offset of 0.18, 2.25, 0 at {_loc10}
+				show 400 cyan dust with size 2.25 with offset of 1.5, 0.18, 0 at {_loc1}
+				show 400 black dust with size 1.8 with offset of 1.5, 0.15, 0 at {_loc4}
+				show 400 black dust with size 1.8 with offset of 1.5, 0.15, 0 at {_loc5}
+				show 25 light blue dust with size 1.8 with offset of 0.45, 0.15, 0 at {_loc5}
+				show 25 light blue dust with size 1.8 with offset of 0.45, 0.15, 0 at {_loc4}
+			else if {_r} is 1:
+				show 400 cyan dust with size 2.25 with offset of 0, 2.25, 0.18 at {_loc10}
+				show 400 cyan dust with size 2.25 with offset of 0, 0.18, 1.5 at {_loc1}
+				show 400 black dust with size 1.8 with offset of 0, 0.15, 1.5 at {_loc4}
+				show 400 black dust with size 1.8 with offset of 0, 0.15, 1.5 at {_loc5}
+				show 25 light blue dust with size 1.8 with offset of 0, 0.15, 0.45 at {_loc5}
+				show 25 light blue dust with size 1.8 with offset of 0, 0.15, 0.45 at {_loc4}
+		else if {_stage} is 4:
+			loop 5 times:
+				show 400 black dust with size 1.8 with offset of 0.15, 1.95, 0.15 at {_loc2}
+				show 400 black dust with size 1.8 with offset of 0.15, 1.95, 0.15 at {_loc3}
+				show 50 cyan dust with size 1.8 with offset of 0.225, 0.45, 0.225 at {_loc5}
+				show 50 cyan dust with size 1.8 with offset of 0.225, 0.45, 0.225 at {_loc4}
+				if {_r} is 0:
+					show 100 dark red dust with size 2.25 with offset of 0.18, 2.25, 0 at {_loc10} 
+					show 100 dark red dust with size 2.25 with offset of 1.5, 0.18, 0 at {_loc1}
+					show 100 gold dust with size 2.25 with offset of 0.18, 2.25, 0 at {_loc10}
+					show 100 gold dust with size 2.25 with offset of 1.5, 0.18, 0 at {_loc1}
+					show 400 black dust with size 1.8 with offset of 1.5, 0.15, 0 at {_loc4}
+					show 400 black dust with size 1.8 with offset of 1.5, 0.15, 0 at {_loc5}
+					show 25 cyan dust with size 1.8 with offset of 0.45, 0.15, 0 at {_loc5}
+					show 25 cyan dust with size 1.8 with offset of 0.45, 0.15, 0 at {_loc4}
+				else if {_r} is 1:
+					show 100 dark red dust with size 2.25 with offset of 0, 2.25, 0.18 at {_loc10} 
+					show 100 dark red dust with size 2.25 with offset of 0, 0.18, 1.5 at {_loc1}
+					show 100 gold dust with size 2.25 with offset of 0, 2.25, 0.18 at {_loc10}
+					show 100 gold dust with size 2.25 with offset of 0, 0.18, 1.5 at {_loc1}
+					show 400 black dust with size 1.8 with offset of 0, 0.15, 1.5 at {_loc4}
+					show 400 black dust with size 1.8 with offset of 0, 0.15, 1.5 at {_loc5}
+					show 25 cyan dust with size 1.8 with offset of 0, 0.15, 0.45 at {_loc5}
+					show 25 cyan dust with size 1.8 with offset of 0, 0.15, 0.45 at {_loc4}
+				wait 0.5 seconds
+			loop 5 times:
+				show 400 black dust with size 1.8 with offset of 0.15, 1.95, 0.15 at {_loc2}
+				show 400 black dust with size 1.8 with offset of 0.15, 1.95, 0.15 at {_loc3}
+				show 50 yellow dust with size 1.8 with offset of 0.225, 0.45, 0.225 at {_loc5}
+				show 50 yellow dust with size 1.8 with offset of 0.225, 0.45, 0.225 at {_loc4}
+				if {_r} is 0:
+					show 100 dark red dust with size 2.25 with offset of 0.18, 2.25, 0 at {_loc10} 
+					show 100 dark red dust with size 2.25 with offset of 1.5, 0.18, 0 at {_loc1}
+					show 100 gold dust with size 2.25 with offset of 0.18, 2.25, 0 at {_loc10}
+					show 100 gold dust with size 2.25 with offset of 1.5, 0.18, 0 at {_loc1}
+					show 400 black dust with size 1.8 with offset of 1.5, 0.15, 0 at {_loc4}
+					show 400 black dust with size 1.8 with offset of 1.5, 0.15, 0 at {_loc5}
+					show 25 yellow dust with size 1.8 with offset of 0.45, 0.15, 0 at {_loc5}
+					show 25 yellow dust with size 1.8 with offset of 0.45, 0.15, 0 at {_loc4}
+				else if {_r} is 1:
+					show 100 dark red dust with size 2.25 with offset of 0, 2.25, 0.18 at {_loc10} 
+					show 100 dark red dust with size 2.25 with offset of 0, 0.18, 1.5 at {_loc1}
+					show 100 gold dust with size 2.25 with offset of 0, 2.25, 0.18 at {_loc10}
+					show 100 gold dust with size 2.25 with offset of 0, 0.18, 1.5 at {_loc1}
+					show 400 black dust with size 1.8 with offset of 0, 0.15, 1.5 at {_loc4}
+					show 400 black dust with size 1.8 with offset of 0, 0.15, 1.5 at {_loc5}
+					show 25 yellow dust with size 1.8 with offset of 0, 0.15, 0.45 at {_loc5}
+					show 25 yellow dust with size 1.8 with offset of 0, 0.15, 0.45 at {_loc4}
+				wait 0.5 seconds
+			loop 3 times:
+				show 400 black dust with size 1.8 with offset of 0.15, 1.95, 0.15 at {_loc2}
+				show 400 black dust with size 1.8 with offset of 0.15, 1.95, 0.15 at {_loc3}
+				show 50 yellow dust with size 1.8 with offset of 0.225, 0.45, 0.225 at {_loc5}
+				show 50 yellow dust with size 1.8 with offset of 0.225, 0.45, 0.225 at {_loc4}
+				if {_r} is 0:
+					show 400 black dust with size 1.8 with offset of 1.5, 0.15, 0 at {_loc4}
+					show 400 black dust with size 1.8 with offset of 1.5, 0.15, 0 at {_loc5}
+					show 25 yellow dust with size 1.8 with offset of 0.45, 0.15, 0 at {_loc5}
+					show 25 yellow dust with size 1.8 with offset of 0.45, 0.15, 0 at {_loc4}
+				else if {_r} is 1:
+					show 400 black dust with size 1.8 with offset of 0, 0.15, 1.5 at {_loc4}
+					show 400 black dust with size 1.8 with offset of 0, 0.15, 1.5 at {_loc5}
+					show 25 yellow dust with size 1.8 with offset of 0, 0.15, 0.45 at {_loc5}
+					show 25 yellow dust with size 1.8 with offset of 0, 0.15, 0.45 at {_loc4}
+				wait 0.5 seconds
+			loop 2 times:
+				show 50 yellow dust with size 1.8 with offset of 0.225, 0.45, 0.225 at {_loc5}
+				show 50 yellow dust with size 1.8 with offset of 0.225, 0.45, 0.225 at {_loc4}
+				if {_r} is 0:
+					show 25 yellow dust with size 1.8 with offset of 0.45, 0.15, 0 at {_loc4}
+					show 25 yellow dust with size 1.8 with offset of 0.45, 0.15, 0 at {_loc5}
+				else if {_r} is 1:
+					show 25 yellow dust with size 1.8 with offset of 0, 0.15, 0.45 at {_loc4}
+					show 25 yellow dust with size 1.8 with offset of 0, 0.15, 0.45 at {_loc5}
+				wait 0.5 seconds
+		
+
