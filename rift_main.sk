@@ -1,0 +1,90 @@
+on damage:
+	metadata value "rift" of victim is "true"
+	loop {rift.armorstands::*}:
+		if {rift.id.%uuid of {rift.armorstands::%loop-index%}%} is set:
+			set {_rift.id} to {rift.id.%uuid of {rift.armorstands::%loop-index%}%}
+			if {rift.phase1.pool.%{_rift.id}%::*} contains victim:
+				play sound "minecraft:entity.zombie.break_wooden_door" with volume 0.5 at victim
+			else:
+				add 1 to {_c}
+			if {rift.phase2.pool.%{_rift.id}%::*} contains victim:
+				play sound "minecraft:entity.zombie.break_wooden_door" with volume 0.5 with pitch 0.8 at victim
+			else:
+				add 1 to {_c}
+			if {rift.phase3.pool.%{_rift.id}%::*} contains victim:
+				play sound "minecraft:entity.zombie.break_wooden_door" with volume 0.5 with pitch 0.6 at victim
+			else:
+				add 1 to {_c}
+			if {_c} is 3:
+				set health of victim to 0
+
+on damage:
+	if name of victim is "<purple><obfuscated>Rifters" or "<cyan><obfuscated>Rifters":
+		if size of {rift.armorstands::*} is 0:
+			set health of victim to 0
+	
+on entity transform:
+	metadata value "rift" of entity is "true"
+	loop {rift.armorstands::*}:
+		if {rift.id.%uuid of {rift.armorstands::%loop-index%}%} is set:
+			set {_rift.id} to {rift.id.%uuid of {rift.armorstands::%loop-index%}%}
+			if {rift.phase1.pool.%{_rift.id}%::*} contains entity:
+				cancel the event
+			if {rift.phase2.pool.%{_rift.id}%::*} contains entity:
+				cancel the event
+			if {rift.phase3.pool.%{_rift.id}%::*} contains entity:
+				cancel the event
+
+
+
+
+every 35 minutes:
+	loop all players:
+		if loop-player is in world "world":
+			if {rift.time::%uuid of {_p}%} is not set:
+				add loop-player to {_rift.players::*}
+	#Узнать есть ли среди вас кто достоин
+	set {_entities::*} to all armor stands in world "world"
+	loop {_entities::*}:
+		if nbt compound of {_entities::%loop-index%} has tag "Marker":
+			if {rift.armorstands.check::*} contains {_entities::%loop-index%}:
+				if {rift.armorstands::*} doesn't contain {_entities::%loop-index%}:
+					kill {_entities::%loop-index%}
+					if {_entities::%loop-index%} is dead:
+						remove {_entities::%loop-index%} from {rift.armorstands.check::*}
+	#Проверка убития арморстендов и жестокое добитие
+	
+	#if {rift.amount} is greater than 5:
+	#else:
+	chance of 15%:
+		riftEvent3Spawn1(random element of {_rift.players::*})
+	else:
+		riftSpawnPlayerDependen(1, {anima.rift.lvlup.active}, {_rift.players::*})
+
+	
+			
+
+command /riftcoords [<boolean>]:
+	permission: *
+	trigger:
+		if arg-1 is set:
+			set {rift.coordinate.show} to arg-1
+			
+on death:
+	if metadata value "rift" of victim is "true":
+		clear drops
+		
+on death:
+	metadata value "rift" of victim is "true"
+	loop {rift.armorstands::*}:
+		if {rift.id.%uuid of {rift.armorstands::%loop-index%}%} is set:
+			set {_rift.id} to {rift.id.%uuid of {rift.armorstands::%loop-index%}%}
+			if {rift.phase1.pool.%{_rift.id}%::*} contains victim:
+				clear drops
+				remove victim from {rift.phase1.pool.%{_rift.id}%::*}
+			if {rift.phase2.pool.%{_rift.id}%::*} contains victim:
+				clear drops
+				remove victim from {rift.phase2.pool.%{_rift.id}%::*}
+			if {rift.phase3.pool.%{_rift.id}%::*} contains victim:
+				clear drops
+				remove victim from {rift.phase3.pool.%{_rift.id}%::*}
