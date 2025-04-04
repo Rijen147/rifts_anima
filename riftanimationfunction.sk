@@ -1,3 +1,7 @@
+#s = size (1 or 2)
+#stage = stages(phases) of Rifts (1 or 2 or 3; 4 - Rift closing; 5 - leveling up to next size)
+#r = rotation (0 - north/south facing, 1 - east/west facing)
+#loc = location where you want to Rift animation to spawn 
 function riftAnimation(s: number, stage: number, r: number, loc: location):
 	if {_s} is 1:
 		set {_loc10} to {_loc}
