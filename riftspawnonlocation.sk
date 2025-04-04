@@ -114,10 +114,7 @@ function riftSpawnOnLocat(r: number, lvlup: boolean, loc: location):
 				else if {_lvlup.chance} is 2:
 					if loop-number-1 is 1:
 						riftAnimation(loop-number-1, 5, {_r}, {_loc})
-						if {rift.coordinate.show} is false:
-							broadcast "<purple>Rift on coordinates.."
-						else:
-							broadcast "<purple>Rift.."
+						broadcast "<purple>Rift on coordinates.."
 						clear {_phase1.spawned}
 						clear {_phase2.spawned}
 						clear {_phase3.spawned}
