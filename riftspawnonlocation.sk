@@ -1,3 +1,6 @@
+#r = rotation (0 - north/south facing, 1 - east/west facing)
+#lvlup = if you want to have a 50% chance of Rift to level up from size = 1 to size = 2 (true/false)
+#loc = location where Rift will spawn (location dependent)
 function riftSpawnOnLocat(r: number, lvlup: boolean, loc: location):
 	if {_lvlup} is true:
 		set {_lvlup.chance} to random integer between 1 and 2
@@ -22,10 +25,9 @@ function riftSpawnOnLocat(r: number, lvlup: boolean, loc: location):
 			exit loop
 		play sound "minecraft:block.end_portal.spawn" with pitch 1.8 to all players
 		if loop-number is 1:
-			broadcast "<purple>Иной мир просачивается через <magenta>разлом"
+			broadcast "<purple>The other world is passing through <magenta>a rift"
 		else if loop-number is 2:
-			broadcast "<cyan><bold>Иной мир просачивается через <light blue>разлом"
-			#send "<cyan><bold>Иной мир просачивается через <light blue><bold>разлом" to {debug}
+			broadcast "<cyan><bold>The other world is passing through <light blue>a rift"
 		if {rift.coordinate.show} is not false:
 			set {_randomint} to random integer between 1 and 4
 			if {_randomint} is 1:
@@ -33,25 +35,21 @@ function riftSpawnOnLocat(r: number, lvlup: boolean, loc: location):
 					broadcast "<purple>X: %x-coordinate of {_loc}% Y: %y-coordinate of {_loc}% Z: %z-coordinate of {_loc}%"
 				else if loop-number is 2:
 					broadcast "<light blue>X: %x-coordinate of {_loc}% Y: <obfuscated>%y-coordinate of {_loc}%<r><light blue> Z: %z-coordinate of {_loc}%"
-					#send "<light blue>X: %x-coordinate of {_loc}% Y: <obfuscated>%y-coordinate of {_loc}%<r><light blue> Z: %z-coordinate of {_loc}%" to {debug}
 			else if {_randomint} is 2:
 				if loop-number is 1:
 					broadcast "<purple>X: <obfuscated>%x-coordinate of {_loc}%<r><purple> Y: %y-coordinate of {_loc}% Z: %z-coordinate of {_loc}%"
 				else if loop-number is 2:
 					broadcast "<light blue>X: %x-coordinate of {_loc}% Y: <obfuscated>%y-coordinate of {_loc}%<r><light blue> Z: %z-coordinate of {_loc}%"
-					#send "<light blue>X: %x-coordinate of {_loc}% Y: <obfuscated>%y-coordinate of {_loc}%<r><light blue> Z: %z-coordinate of {_loc}%" to  {debug}
 			else if {_randomint} is 3:
 				if loop-number is 1:
 					broadcast "<purple>X: %x-coordinate of {_loc}% Y: <obfuscated>%y-coordinate of {_loc}%<r><purple> Z: %z-coordinate of {_loc}%"
 				else if loop-number is 2:
 					broadcast "<light blue>X: %x-coordinate of {_loc}% Y: <obfuscated>%y-coordinate of {_loc}%<r><light blue> Z: %z-coordinate of {_loc}%"
-					#send "<light blue>X: %x-coordinate of {_loc}% Y: <obfuscated>%y-coordinate of {_loc}%<r><light blue> Z: %z-coordinate of {_loc}%" to  {debug}
 			else if {_randomint} is 4:
 				if loop-number is 1:
 					broadcast "<purple>X: %x-coordinate of {_loc}% Y: %y-coordinate of {_loc}% Z: <obfuscated>%z-coordinate of {_loc}%"
 				else if loop-number is 2:
 					broadcast "<light blue>X: %x-coordinate of {_loc}% Y: %y-coordinate of {_loc}% Z: <obfuscated>%z-coordinate of {_loc}%"
-					#send "<light blue>X: %x-coordinate of {_loc}% Y: %y-coordinate of {_loc}% Z: <obfuscated>%z-coordinate of {_loc}%" to {debug}
 		set {_phase} to 1
 		while difference between now and {rift.time.%uuid of {_armor.stand}%} is less than 10 minutes:
 			if {_phase} is 1:
@@ -112,29 +110,23 @@ function riftSpawnOnLocat(r: number, lvlup: boolean, loc: location):
 				if {_lvlup.chance} is 1:
 					apply darkness to all players in radius 10 of {_loc} for 10 seconds
 					riftAnimation(loop-number-1, 4, {_r}, {_loc})
-					broadcast "<purple>Разлом на координатах X: %x-coordinate of {_loc}% Y: %y-coordinate of {_loc}% Z: %z-coordinate of {_loc}% закрыт."
-					chance of 33%:
-						drop glowing iron nugget named "<##c7c7c7>Оловянный кусочек" with lore "", "<##9e9e9e>Заряжен Осдейном" at {_loc}
+					broadcast "<purple>Rift on coordinates X: %x-coordinate of {_loc}% Y: %y-coordinate of {_loc}% Z: %z-coordinate of {_loc}% is closed."
 				else if {_lvlup.chance} is 2:
 					if loop-number-1 is 1:
 						riftAnimation(loop-number-1, 5, {_r}, {_loc})
 						if {rift.coordinate.show} is false:
-							broadcast "<purple>Разлом на координатах.."
-							#send "<purple>Разлом на координатах.." to {debug}
+							broadcast "<purple>Rift on coordinates.."
 						else:
-							broadcast "<purple>Разлом.."
-							#send "<purple>Разлом.." to {debug}
+							broadcast "<purple>Rift.."
 						clear {_phase1.spawned}
 						clear {_phase2.spawned}
 						clear {_phase3.spawned}
 						wait 5 second
-						broadcast "<cyan>..открывается с новой силой!"
-						#send "<cyan>..открывается с новой силой!" to {debug}
+						broadcast "<cyan>..is opening with a renewed force!"
 						wait 6 seconds
 					else if loop-number-1 is 2:
 						riftAnimation(loop-number-1, 4, {_r}, {_loc})
-						broadcast "<cyan>Разлом на координатах X: %x-coordinate of {_loc}% Y: %y-coordinate of {_loc}% Z: %z-coordinate of {_loc}% закрыт."
-						#send "<cyan>Разлом на координатах X: %x-coordinate of {_loc}% Y: %y-coordinate of {_loc}% Z: %z-coordinate of {_loc}% закрыт." to {debug}
+						broadcast "<cyan>Rift on coordinates X: %x-coordinate of {_loc}% Y: %y-coordinate of {_loc}% Z: %z-coordinate of {_loc}% is closed."
 						apply darkness to all players in radius 15 of {_loc} for 10 seconds
 				exit 1 loop
 			wait 25 ticks
