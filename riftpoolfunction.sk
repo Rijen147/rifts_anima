@@ -1,3 +1,7 @@
+#lvl = level (phase of Rift) (1,2,3)
+#loc = location where mobs will spawn
+#rift.id = ID of current Rift
+#s = size of Rift
 function riftPool(lvl: number, loc: location, rift.id: number, s: number):
 	set {_chance} to a random integer between 1 and 100
 	if {_lvl} = 1:
