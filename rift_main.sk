@@ -1,3 +1,4 @@
+#adds custom sounds on Rifters getting hit
 on damage:
 	metadata value "rift" of victim is "true"
 	loop {rift.armorstands::*}:
@@ -18,11 +19,13 @@ on damage:
 			if {_c} is 3:
 				set health of victim to 0
 
+#non-rift Rifters that haven't been killed for some reason are getting one shotted
 on damage:
 	if name of victim is "<purple><obfuscated>Rifters" or "<cyan><obfuscated>Rifters":
 		if size of {rift.armorstands::*} is 0:
 			set health of victim to 0
-	
+
+#cancels transformation of zombies-Rifters
 on entity transform:
 	metadata value "rift" of entity is "true"
 	loop {rift.armorstands::*}:
@@ -37,13 +40,16 @@ on entity transform:
 
 
 
-
+#main periodical spawn event
 every 35 minutes:
+	#checks all players in world
 	loop all players:
 		if loop-player is in world "world":
 			if {rift.time::%uuid of {_p}%} is not set:
 				add loop-player to {_rift.players::*}
-	#Узнать есть ли среди вас кто достоин
+	
+	
+	#checks if some armorstands aren't killed after Rift disappearing
 	set {_entities::*} to all armor stands in world "world"
 	loop {_entities::*}:
 		if nbt compound of {_entities::%loop-index%} has tag "Marker":
@@ -52,39 +58,39 @@ every 35 minutes:
 					kill {_entities::%loop-index%}
 					if {_entities::%loop-index%} is dead:
 						remove {_entities::%loop-index%} from {rift.armorstands.check::*}
-	#Проверка убития арморстендов и жестокое добитие
 	
+	
+	#needed if you want to make a limit of Rifts that could spawn simultaneously 
 	#if {rift.amount} is greater than 5:
 	#else:
-	chance of 15%:
-		riftEvent3Spawn1(random element of {_rift.players::*})
-	else:
-		riftSpawnPlayerDependen(1, {anima.rift.lvlup.active}, {_rift.players::*})
+
+	#rift spawn function runs (player dependent)
+	riftSpawnPlayerDependen(1, {anima.rift.lvlup.active}, {_rift.players::*})
 
 	
 			
-
+#if you want to on/off the broadcasting of coords of a Rift
 command /riftcoords [<boolean>]:
 	permission: *
 	trigger:
 		if arg-1 is set:
 			set {rift.coordinate.show} to arg-1
-			
+
+#cancels any drops from Rifters
 on death:
 	if metadata value "rift" of victim is "true":
 		clear drops
-		
+
+
+#removes Rifters from list variables of phases (needed to run the next phase of Rift) 
 on death:
 	metadata value "rift" of victim is "true"
 	loop {rift.armorstands::*}:
 		if {rift.id.%uuid of {rift.armorstands::%loop-index%}%} is set:
 			set {_rift.id} to {rift.id.%uuid of {rift.armorstands::%loop-index%}%}
 			if {rift.phase1.pool.%{_rift.id}%::*} contains victim:
-				clear drops
 				remove victim from {rift.phase1.pool.%{_rift.id}%::*}
 			if {rift.phase2.pool.%{_rift.id}%::*} contains victim:
-				clear drops
 				remove victim from {rift.phase2.pool.%{_rift.id}%::*}
 			if {rift.phase3.pool.%{_rift.id}%::*} contains victim:
-				clear drops
 				remove victim from {rift.phase3.pool.%{_rift.id}%::*}
